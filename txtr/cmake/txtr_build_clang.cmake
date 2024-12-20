@@ -20,6 +20,9 @@ macro(add_global_flags)
         $<$<CONFIG:Release>:SHELL:"-O2" SHELL:"-DNDEBUG">
         $<$<CONFIG:Debug>:SHELL:"-O0" SHELL:"-g3" SHELL:"-ggdb">)
     add_compile_options("$<$<COMPILE_LANGUAGE:C>:${TXTR_BUILD_C_COMPILE_FLAGS}>")
+    set(TXTR_BUILD_CXX_COMPILE_FLAGS
+        SHELL:"-fvisibility=hidden" SHELL:"-fPIC")
+    add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:${TXTR_BUILD_CXX_COMPILE_FLAGS}>")
 endmacro()
 
 macro(add_global_sse_flags)

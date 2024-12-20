@@ -15,44 +15,47 @@ erase_default_options()
 
 macro(add_global_flags)
     # all
-    set(OCQ_BUILD_C_COMPILE_FLAGS
+    set(OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_FLAGS
         SHELL:"-fvisibility=hidden" SHELL:"-Werror=vla" SHELL:"-Werror=missing-prototypes" SHELL:"-Werror=aggregate-return" SHELL:"-Werror=switch" SHELL:"-Werror=uninitialized" SHELL:"-Werror=varargs" SHELL:"-Werror=shift-count-overflow" SHELL:"-Wall" SHELL:"-Wextra" SHELL:"-pedantic-errors"
         $<$<CONFIG:Release>:SHELL:"-O2" SHELL:"-DNDEBUG">
         $<$<CONFIG:Debug>:SHELL:"-O0" SHELL:"-g3" SHELL:"-ggdb">)
-    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCQ_BUILD_C_COMPILE_FLAGS}>")
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_FLAGS}>")
+    set(OCTREE_COLOR_QUANTIZER_BUILD_CXX_COMPILE_FLAGS
+        SHELL:"-fvisibility=hidden" SHELL:"-fPIC")
+    add_compile_options("$<$<COMPILE_LANGUAGE:CXX>:${OCTREE_COLOR_QUANTIZER_BUILD_CXX_COMPILE_FLAGS}>")
 endmacro()
 
 macro(add_global_sse_flags)
     # all
-    set(OCQ_BUILD_C_COMPILE_SSE_FLAGS
+    set(OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_SSE_FLAGS
         "-msse")
-    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCQ_BUILD_C_COMPILE_SSE_FLAGS}>")
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_SSE_FLAGS}>")
 endmacro()
 
 macro(add_global_sse2_flags)
     # all
-    set(OCQ_BUILD_C_COMPILE_SSE2_FLAGS
+    set(OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_SSE2_FLAGS
         "-msse2")
-    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCQ_BUILD_C_COMPILE_SSE2_FLAGS}>")
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_SSE2_FLAGS}>")
 endmacro()
 
 macro(add_global_avx_flags)
     # all
-    set(OCQ_BUILD_C_COMPILE_AVX_FLAGS
+    set(OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_AVX_FLAGS
         "-mavx")
-    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCQ_BUILD_C_COMPILE_AVX_FLAGS}>")
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_AVX_FLAGS}>")
 endmacro()
 
 macro(add_global_avx2_flags)
     # all
-    set(OCQ_BUILD_C_COMPILE_AVX2_FLAGS
+    set(OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_AVX2_FLAGS
         "-mavx2")
-    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCQ_BUILD_C_COMPILE_AVX2_FLAGS}>")
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_AVX2_FLAGS}>")
 endmacro()
 
 macro(add_global_vec_flags)
     # all
-    set(OCQ_BUILD_C_COMPILE_VEC_FLAGS
+    set(OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_VEC_FLAGS
         SHELL:"-mfpmath=sse" SHELL:"-ffp-contract=off")
-    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCQ_BUILD_C_COMPILE_VEC_FLAGS}>")
+    add_compile_options("$<$<COMPILE_LANGUAGE:C>:${OCTREE_COLOR_QUANTIZER_BUILD_C_COMPILE_VEC_FLAGS}>")
 endmacro()
