@@ -3,7 +3,7 @@ dp0="$(dirname $(readlink -m $BASH_SOURCE))"
 iswin=""
 [ -n "${2}" ] && iswin="1"
 isfile=""
-if [ -n "${2}" ] && [ "${2}" == *dll ] ; then
+if [ -n "${2}" ] && [ "${2}" != "$(printf '%s' "${2}" | sed 's/'"dll"'//g')" ] ; then
     isfile="1"
 fi
 [ -n "${iswin}" ] && lext=".dll" || lext=".so"

@@ -4,7 +4,7 @@ destdir="$(printf '%s' ${2} | sed -E -e 's/\\/\//g' -e 's/C:/\/c/g' -e 's/\"*([^
 iswin=""
 [ -n "${3}" ] && iswin="1"
 isfile=""
-if [ -n "${3}" ] && [ "${3}" == *dll ] ; then
+if [ -n "${3}" ] && [ "${3}" != "$(printf '%s' "${3}" | sed 's/'"dll"'//g')" ] ; then
     isfile="1"
 fi
 [ -n "${iswin}" ] && lext=".dll" || lext=".so"
